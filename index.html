@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+     * {
+       box-sizing: border-box;
+     }
+      
+      :root {
+        --clr-primary: #252525;
+        --clr-on-primary: white;
+
+        --clr-compl: #333333;
+        --clr-on-compl: white;
+
+        --clr-confirmar: #01AC12; 
+        --clr-on-confirmar: white;
+
+        --clr-neutra: #C68200;
+        --clr-on-neutra: white;
+
+        --clr-perigo: #C63B00;
+        --clr-on-perigo: white;
+      }
+
+      html {
+        background-color: var(--clr-primary);
+        font-family: 'Inter', sans-serif;;
+      } 
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        color: var(--clr-on-primary);
+      }
+
+      p {
+        margin: 0;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button {
+        padding: 10px;
+        background-color: var(--clr-on-primary);
+        color: var(--clr-primary);
+        border-radius: 5px;
+        border: 0;
+        margin: 0;
+      }
+
+      .frame-imagem {
+        min-width:500px;
+        width:500px;
+        height: 500px;
+        aspect-ratio:1;
+
+        background-color: var(--clr-compl);
+        color: var(--clr-on-compl);
+
+        border-radius: 10px;
+      }
+
+      .imagem-eu {
+        width:100%;
+        height:100%;
+      }
+
+      .nome {
+        font-size: 48px;
+      }
+
+      .curso {
+        font-size: 28px;
+      }
+
+      .resumo-holder {
+        background-color: var(--clr-compl);
+        color: var(--clr-on-compl);
+
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .resumo {
+        font-size: 20px;
+      }
+
+      .imagem-eu {
+        border-radius: 10px;
+      }
+
+      .botao-holder {
+        display:flex;
+        gap:10px;
+      }
+
+      .botao-header {
+        display:flex;
+        gap:10px;
+        align-items:center;
+        border: none;
+        outline: none;
+        padding: 10px;
+
+        font-size: 20px;
+        background-color: white;
+        border-radius: 5px;
+      }
+
+      .icone-botao {
+        width:20px;
+        height:20px;
+      }
+
+      .secao-principal {
+        display:flex;
+        gap: 100px;
+        padding:100px;
+      }
+
+      .metadata-holder {
+        display:flex;
+        flex-direction: column;
+        gap:20px;
+      }
+
+      .titulo-secao {
+        font-size: 36px;
+      }
+
+      .projeto-holder {
+        display:flex;
+        flex-direction: column;
+        gap:20px;
+        overflow-x: scroll;
+        padding-left: 100px;
+        padding-right: 100px;
+      }
+
+      .projeto-holder-holder {
+        position: relative;
+        width:100%;
+        height:fit-content;
+      }
+
+      .botao-navegar-direita, .botao-navegar-esquerda {
+        position: absolute;
+        padding:10px;
+        background-color: white;
+        color: black;
+        z-index: 20;
+      }
+
+      .botao-navegar-esquerda {
+        left: 0;
+        bottom: 0;
+        top: 0;
+      }
+
+      .botao-navegar-direita {
+        right: 0;
+        bottom: 0;
+        top: 0;
+      }
+
+      .projeto {
+        position: relative;
+        width: 100%;
+        height: 650px;
+
+        background-color: var(--clr-compl);
+        border-radius: 10px;
+      }
+
+      .img-projeto {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background-color:white;
+        
+        border-radius: 10px;
+      }
+      
+      .img-card-tec {
+        width: 20px;
+        height: 20px;
+      }
+
+      .overlay-projeto {
+        display:flex;
+        flex-direction: column;
+
+        justify-content: space-between;
+
+        position:relative;
+        z-index: 10;
+        // background-color: rgba(0,0,0,0.5);
+        background: linear-gradient(to top right, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
+        width: 100%;
+        height:100%;
+
+        padding:20px;
+        border-radius: 10px;
+      }
+
+
+      .footer-projeto, .header-projeto {
+        display:flex;
+        justify-content: space-between;
+      }
+
+      .card-status {
+        display: flex;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .progresso {
+        background-color: var(--clr-neutra);
+        color: var(--clr-on-neutra);
+      } 
+
+      .completo {
+        background-color: var(--clr-confirmar);
+        color: var(--clr-on-confirmar);
+      }
+
+      .incompleto {
+        background-color: var(--clr-perigo);
+        color: var(--clr-on-perigo);
+      }
+
+      .metadata-projeto {
+        display:flex;
+        flex-direction: column;
+        justify-content: end;
+      }
+
+      .titulo-projeto {
+        font-size:32px;
+      }
+
+      .descricao-projeto {
+        font-size: 20px;
+      }
+      
+      .tecnologias-projeto {
+        display:flex;
+        flex-direction: column;
+        gap: 10px;
+      } 
+
+      .tecnologias-front, .tecnologias-back {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: end;
+      }
+
+      .card-tec {
+        display:flex;
+        padding:10px;
+        background-color: white;
+        color: black;
+        gap: 5px;
+
+        border-radius: 5px;
+      }
+
+      .titulo-secao {
+        padding-left: 100px;
+        padding-bottom: 40px;
+      }
+
+      .botao-opt {
+        display:none;
+      }
+      .visivel {
+        display:initial;
+      }
+
+      @media (max-width: 1200px) {
+        .secao-principal {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width:900px) {
+        .footer-projeto {
+          flex-direction:column;
+          gap: 10px;
+        }
+        .tecnologias-front, .tecnologias-back {
+          justify-content:start;
+        }
+      }
+
+      @media (max-width:700px) {
+        .secao-principal {
+          padding:10px;
+          gap:10px;
+        }
+        .titulo-secao {
+          padding-left: 10px;
+          padding-right:10px;
+        }
+        .projeto-holder {
+          padding:10px;
+          gap:10px;
+        }
+      }
+
+      @media (max-width:500px) {
+        .frame-imagem, .imagem-eu {
+          width: 100%;
+          height:auto;
+          aspect-ratio: 1;
+          min-width: 0;
+        }
+      }
+    </style>
+   <script>
+     // iscripts
+    const CLASSE_PROJETO_HOLDER = ".projeto-holder";
+    const Tecnologias = {
+      JAVASCRIPT: 1,
+      SWING: 2,
+      SPRING: 3,
+      RUST: 4,
+      ANGULAR: 5,
+      SVELTE: 6,
+      SQLITE: 7,
+      POSTGRES: 8,
+      ANDROID: 9,
+    }
+    const StatusProjeto = {
+      PROGRESSO: 1,
+      INCOMPLETO: 2,
+      COMPLETO: 3
+    }
+    const projetos = [
+      {
+        titulo: "Ecommerce",
+        descricao: "Site de Ecommerce generico",
+        tecFront: [Tecnologias.ANGULAR],
+        tecBack: [Tecnologias.SPRING, Tecnologias.POSTGRES],
+        statusProjeto: StatusProjeto.PROGRESSO,
+        imgProjeto: "https://media.discordapp.net/attachments/571865453920518144/1187470479041237032/Screenshot_from_2023-12-21_16-03-19.png?ex=65970110&is=65848c10&hm=a63d2fc0795c0552376e436db869cd6970e99049c113b94958107db1010a8e95&=&format=webp&quality=lossless&width=950&height=475",
+        repo: "https://github.com/luis10barbo/loja-spring",
+        website: "https://ecommerce.luisbb.com"
+      },
+      {
+        titulo: "Chat Tempo Real",
+        descricao: "Chat em tempo real inspirado por whatsapp",
+        tecFront: [Tecnologias.SVELTE],
+        tecBack: [Tecnologias.RUST, Tecnologias.SQLITE],
+        statusProjeto: StatusProjeto.PROGRESSO,
+        imgProjeto: "https://media.discordapp.net/attachments/828430263607623730/1187596721417621554/Screenshot_from_2023-12-21_21-36-41.png?ex=659776a2&is=658501a2&hm=346875b06bf20e534572238065e418d9c4824036bdd1b8195efcc0886e98ad95&=&format=webp&quality=lossless&width=950&height=475",
+        repo:"https://github.com/luis10barbo/chatapp",
+        website: "https://chat.luisbb.com/"
+      },
+      {
+        titulo: "GStock",
+        descricao: "Gerenciador de Estoque generico feito em Java",
+        tecFront: [Tecnologias.SWING],
+        tecBack: [Tecnologias.SQLITE],
+        statusProjeto: StatusProjeto.COMPLETO,
+        imgProjeto: "https://github.com/luis10barbo/GStock/raw/dev/extra/estoque.png?raw=true",
+        repo: "https://github.com/luis10barbo/GStock",
+        download: "https://github.com/luis10barbo/GStock/releases/download/1.0/EstoqueSwing-1.0.jar"
+      },
+      {
+        titulo: "Gerador de Treino",
+        descricao: "Aplicativo Mobile com funcionalidade completa para gerenciar rotinas de exercicios fisicos de clientes",
+        tecFront: [Tecnologias.ANDROID],
+        tecBack: [Tecnologias.SQLITE],
+        statusProjeto: StatusProjeto.COMPLETO,
+        imgProjeto: "https://i.imgur.com/lHml4vp.jpeg"
+      }
+    ]
+
+    const InfoTecnologia = {
+      [Tecnologias.SVELTE]: {
+        img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
+        titulo: "Svelte"
+      },
+      [Tecnologias.SPRING]: {
+        img: "https://www.svgrepo.com/download/376350/spring.svg",
+        titulo: "Spring"
+      },
+      [Tecnologias.JAVASCRIPT]: {
+        img: "https://www.svgrepo.com/download/353925/javascript.svg",
+        titulo: "JavaScript"
+      },
+      [Tecnologias.ANGULAR]: {
+        img: "https://www.svgrepo.com/download/503165/angular.svg",
+        titulo: "Angular"
+      },
+      [Tecnologias.RUST]: {
+        img: "https://www.svgrepo.com/download/369528/rust.svg",
+        titulo: "Rust"
+      },
+      [Tecnologias.SWING]: {
+        img: "https://www.svgrepo.com/download/452234/java.svg",
+        titulo: "Swing"
+      },
+      [Tecnologias.SQLITE]: {
+        img: "https://www.svgrepo.com/download/374094/sqlite.svg",
+        titulo: "SQLite"
+      },
+      [Tecnologias.POSTGRES]: {
+        img: "https://www.svgrepo.com/download/354200/postgresql.svg",
+        titulo: "PostgreSQL"
+      }, 
+      [Tecnologias.ANDROID]: {
+        img: "https://www.svgrepo.com/download/475631/android-color.svg",
+        titulo: "Android"
+      }
+    }
+
+    window.onload = () => {
+      function popularProjetos() {
+       const projetoHolder = document.querySelector(CLASSE_PROJETO_HOLDER); 
+        projetos.forEach(projeto => {
+          const templateProjeto = document.querySelector(".template-projeto").content.cloneNode(true);
+          console.log(templateProjeto);
+          templateProjeto.querySelector(".titulo-projeto").innerText = projeto.titulo;
+
+          if (projeto.descricao) {
+            templateProjeto.querySelector(".descricao-projeto").innerText = projeto.descricao;
+          }
+
+          if (projeto.imgProjeto) {
+            templateProjeto.querySelector(".img-projeto").src = projeto.imgProjeto;
+          }
+          
+
+          // STATUS PROJETO
+          const statusProjeto = templateProjeto.querySelector(".projeto-status");
+          const cardStatus = templateProjeto.querySelector(".card-status");
+          if (projeto.statusProjeto == StatusProjeto.INCOMPLETO) {
+            statusProjeto.innerText = "Incompleto";
+            cardStatus.classList.add("incompleto");
+          } else if (projeto.statusProjeto == StatusProjeto.PROGRESSO) {
+            statusProjeto.innerText = "Em Progresso";
+            cardStatus.classList.add("progresso");
+          } else if (projeto.statusProjeto == StatusProjeto.COMPLETO) {
+            statusProjeto.innerText = "Completo";
+            cardStatus.classList.add("completo");
+          }
+
+          // LINKS PROJETO
+          if (projeto.repo) {
+            const aBotaoRepo = templateProjeto.querySelector(".a-botao-repo");
+            aBotaoRepo.classList.add("visivel");
+            aBotaoRepo.href = projeto.repo;
+          }
+
+          if (projeto.website) {
+            const aBotaoRepo = templateProjeto.querySelector(".a-botao-acessar");
+            aBotaoRepo.classList.add("visivel");
+            aBotaoRepo.href = projeto.website;
+          }
+
+          if (projeto.download) {
+            const aBotaoRepo = templateProjeto.querySelector(".a-botao-download");
+            aBotaoRepo.classList.add("visivel");
+            aBotaoRepo.href = projeto.download;
+          }
+
+          const templateCardTec = templateProjeto.querySelector("#template-cardtec");
+          projeto.tecBack.forEach((tecnologia) => {
+            const cardTec = templateCardTec.content.cloneNode(true);
+            console.log(InfoTecnologia, tecnologia);
+            cardTec.querySelector(".nome-card-tec").innerText = InfoTecnologia[tecnologia].titulo;
+            cardTec.querySelector(".img-card-tec").src = InfoTecnologia[tecnologia].img;
+            
+            templateProjeto.querySelector(".tecnologias-back").appendChild(
+              document.importNode(cardTec, true)
+            );
+
+          })
+          
+          projeto.tecFront.forEach((tecnologia) => {
+            const cardTec = templateCardTec.content.cloneNode(true);
+            console.log(InfoTecnologia, tecnologia);
+            cardTec.querySelector(".nome-card-tec").innerText = InfoTecnologia[tecnologia].titulo;
+            cardTec.querySelector(".img-card-tec").src = InfoTecnologia[tecnologia].img;
+            
+            templateProjeto.querySelector(".tecnologias-front").appendChild(
+              document.importNode(cardTec, true)
+            );
+
+          })
+
+          projetoHolder.appendChild(
+            document.importNode(templateProjeto, true)
+          );
+          // projetoHolder.innerHTML += templateProjeto.innerHTML;
+        });
+        }
+
+      popularProjetos();
+    }
+  </script>
+
+  </head>
+  <body>
+    <section class="secao-principal">
+      <div class="frame-imagem">
+        <img class="imagem-eu" src="https://avatars.githubusercontent.com/u/89195562?v=4" alt="avatar-github">
+      </div>
+      <div class="metadata-holder">
+        <p class="nome">Luis Eduardo Nunes de Mello e Mello</p>
+        <p class="curso">Curso: Sistema de Informacao (Estacio Recife)</p> 
+        <div class="resumo-holder">
+          <p class="resumo">
+            Em 2021, por grande interesse pela área, decidi integrar a programação a minha rotina diária. Com uma vontade insaciável de adquirir conhecimento, acabei aprendendo sozinho uma grande diversidade de linguagens e tecnologias, indo de Python, JavaScript e Java até outras mais difíceis, como C, Go e Rust
+
+  Atualmente, continuo pesquisando e aprendendo novos temas, mantendo um constante desenvolvimento nas minhas habilidades. 
+          </p>
+        </div>
+        <div class="botao-holder">
+          <a href="https://github.com/luis10barbo">
+            <button class="botao-header">
+              <img class="icone-botao" src="https://www.svgrepo.com/download/512317/github-142.svg" alt="icone github">
+              Github
+            </button>
+        </a>
+        <a href="https://github.com/luis10barbo">
+            <button class="botao-header">
+              <img class="icone-botao" src="https://www.svgrepo.com/download/448226/gitlab.svg" alt="icone gitlab">
+              Gitlab
+            </button>
+        </a>
+        <button class="botao-header">
+          <img class="icone-botao" src="https://www.svgrepo.com/download/438892/telephone.svg" alt="icone telefone">
+          +55 (21) 9.8086-3457
+        </button>
+      </div>
+    
+      </div>
+    </section>
+
+    <section>
+      <p class="titulo-secao">
+        Projetos
+      </p>
+      <template class="template-projeto">
+          <div class="projeto">
+            <img class="img-projeto" src="" alt="">
+            <div class="overlay-projeto">
+              <header class="header-projeto">
+                <div class="holder-esquerda">
+                  <a class="a-botao-acessar botao-opt" href="">
+                    <button class="botao-acessar">Acessar</button>
+                  </a>
+                  <a class="a-botao-repo botao-opt" href="">
+                    <button class="botao-repo">Repositorio</button>
+                  </a>
+                  <a class="a-botao-download botao-opt">
+                    <button class="botao-download">Download</button>
+                  </a>
+                  </a>
+                </div>  
+
+                <div class="card-status">
+                  <p class="projeto-status">
+                    status
+                  </p>
+                </div>
+              </header>
+              <footer class="footer-projeto">
+                <div class="metadata-projeto">
+                  <p class="titulo-projeto">
+                    Titulo Projeto
+                  </p>
+
+                  <p class="descricao-projeto">
+                    Descricao Projeto
+                  </p>
+                </div>
+
+                <div class="tecnologias-projeto">
+                  <template id="template-cardtec">
+                    <div class="card-tec">
+                      <img class="img-card-tec" src="" alt=""/>
+                      <p class="nome-card-tec">Tecnologia</p>
+                    </div>
+                  </template>
+                  <div class="tecnologias-front">
+                    <p>Frontend</p>
+                  </div>
+
+                  <div class="tecnologias-back">
+                    <p>Backend</p>
+                  </div>
+                </div>
+              </footer> 
+            </div>
+            
+          </div>
+        </template>
+      <div class="projeto-holder-holder">
+        <div class="projeto-holder"> 
+        
+        </div>  
+      </div>
+      
+    </section>
+   </body>
+     
+</html>

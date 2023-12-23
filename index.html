@@ -53,15 +53,18 @@
 
       button {
         cursor: pointer;
-      }
-
-      button {
         padding: 10px;
         background-color: var(--clr-on-primary);
         color: var(--clr-primary);
         border-radius: 5px;
         border: 0;
         margin: 0;
+        transition: 75ms background-color;
+      }
+
+      button:hover {
+        background-color:rgb(240,240,240);
+
       }
 
       .frame-imagem {
@@ -443,6 +446,15 @@
     }
 
     window.onload = () => {
+      function copiarTelefone() {
+        const botaoTelefone = document.querySelector(".botao-telefone");
+        navigator.clipboard.writeText(botaoTelefone.innerText).then(() => {
+          alert("Telefone copiado!");
+        }, (err) => {
+          alert("Nao foi possivel copiar o telefone!", err);
+        });
+      }
+
       function popularProjetos() {
        const projetoHolder = document.querySelector(CLASSE_PROJETO_HOLDER); 
         projetos.forEach(projeto => {
@@ -522,7 +534,9 @@
           );
           // projetoHolder.innerHTML += templateProjeto.innerHTML;
         });
-        }
+
+        document.querySelector(".botao-telefone").addEventListener("click", copiarTelefone);
+      }
 
       popularProjetos();
     }
@@ -559,8 +573,8 @@
               Gitlab
             </button>
         </a>
-        <button class="botao-header">
-          <img class="icone-botao" src="https://www.svgrepo.com/download/438892/telephone.svg" alt="icone telefone">
+        <button class="botao-header botao-telefone">
+          <img class="icone-botao" src="https://www.svgrepo.com/download/526961/copy.svg" alt="icone telefone">
           +55 (21) 9.8086-3457
         </button>
       </div>

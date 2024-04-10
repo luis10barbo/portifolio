@@ -98,14 +98,21 @@
 
  window.onload = () => {
    function copiarTelefone() {
-    /** @type {HTMLButtonElement | null} */
-     const botaoTelefone = document.querySelector(".botao-telefone");
-     if (botaoTelefone == null) {
-        return;
-     }
+    
+     const botaoTelefone = /** @type {HTMLButtonElement} */ (document.querySelector(".botao-telefone"));
 
      navigator.clipboard.writeText(botaoTelefone.innerText).then(() => {
        alert("Telefone copiado!");
+     }, (err) => {
+       alert("Nao foi possivel copiar o telefone! " + err);
+     });
+   }
+
+   function copiarEmail() {
+    const botaoEmail = /** @type {HTMLButtonElement} */ (document.querySelector(".botao-email"));
+
+     navigator.clipboard.writeText(botaoEmail.innerText).then(() => {
+       alert("Email copiado!");
      }, (err) => {
        alert("Nao foi possivel copiar o telefone! " + err);
      });
@@ -262,6 +269,8 @@
      });
 
      /** @type {HTMLButtonElement} */ (document.querySelector(".botao-telefone")).addEventListener("click", copiarTelefone);
+     /** @type {HTMLButtonElement} */ (document.querySelector(".botao-email")).addEventListener("click", copiarEmail);
+
    }
 
    async function observarLoad() {

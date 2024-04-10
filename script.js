@@ -272,13 +272,22 @@
     }
 
     let i = 1;
-    setInterval(() => {
+    let reps = i
+    const maxReps = 3000 / 250
+    const interval = setInterval(() => {
         carregandoText.innerText = `Carregando ${".".repeat(i)}`
         if (i == 3) {
-            i = 1;
+            i = 0;
         }
         i++;
-    }, 250)
+        reps++;
+        
+        if (reps > maxReps) {
+            clearInterval(interval);
+        }
+
+    }, 250);
+
    }
 
    popularProjetos();

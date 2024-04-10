@@ -242,11 +242,12 @@
      padding:20px;
      border-radius: 10px;
      transition: 75ms background-color;
+     /* cursor: pointer; */
    }
 
-   .overlay-projeto:hover {
+   /* .overlay-projeto:hover {
      background-color: rgba(0,0,0,0.3);
-   }
+   } */
 
    .footer-projeto, .header-projeto {
      display:flex;
@@ -368,6 +369,13 @@
     font-size: 48px;
     text-transform: capitalize;
     font-weight: 500;
+   }
+
+   .bem-vindo-carregando {
+    position: fixed;
+    bottom: 20px;  
+    text-transform: capitalize;
+    font-size: 20px;
    }
 
    @media (max-width: 1200px) {

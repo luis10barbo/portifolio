@@ -33,7 +33,7 @@
      tecFront: [Tecnologias.SVELTE],
      tecBack: [Tecnologias.RUST, Tecnologias.SQLITE],
      statusProjeto: StatusProjeto.PROGRESSO,
-     imgProjeto: "https://media.discordapp.net/attachments/828430263607623730/1187596721417621554/Screenshot_from_2023-12-21_21-36-41.png?ex=659776a2&is=658501a2&hm=346875b06bf20e534572238065e418d9c4824036bdd1b8195efcc0886e98ad95&=&format=webp&quality=lossless&width=950&height=475",
+     imgProjeto: "https://github.com/luis10barbo/chatapp/blob/main/Captura%20de%20tela%202023-11-04%20204857.png?raw=true",
      repo:"https://github.com/luis10barbo/chatapp",
      website: "https://chat.luisbrb.com.br/"
    },

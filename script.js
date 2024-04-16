@@ -25,7 +25,7 @@
      statusProjeto: StatusProjeto.PROGRESSO,
      imgProjeto: "https://media.discordapp.net/attachments/571865453920518144/1187470479041237032/Screenshot_from_2023-12-21_16-03-19.png?ex=65970110&is=65848c10&hm=a63d2fc0795c0552376e436db869cd6970e99049c113b94958107db1010a8e95&=&format=webp&quality=lossless&width=950&height=475",
      repo: "https://github.com/luis10barbo/loja-spring",
-     website: "https://ecommerce.luisbb.com"
+    //  website: "https://ecommerce.luisbrb.com.br"
    },
    {
      titulo: "Chat Tempo Real",
@@ -35,7 +35,7 @@
      statusProjeto: StatusProjeto.PROGRESSO,
      imgProjeto: "https://media.discordapp.net/attachments/828430263607623730/1187596721417621554/Screenshot_from_2023-12-21_21-36-41.png?ex=659776a2&is=658501a2&hm=346875b06bf20e534572238065e418d9c4824036bdd1b8195efcc0886e98ad95&=&format=webp&quality=lossless&width=950&height=475",
      repo:"https://github.com/luis10barbo/chatapp",
-     website: "https://chat.luisbb.com/"
+     website: "https://chat.luisbrb.com.br/"
    },
    {
      titulo: "GStock",

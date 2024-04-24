@@ -25,7 +25,7 @@
      statusProjeto: StatusProjeto.PROGRESSO,
      imgProjeto: "https://github.com/luis10barbo/loja-spring/blob/dev/siteecommerce.png?raw=true",
      repo: "https://github.com/luis10barbo/loja-spring",
-    //  website: "https://ecommerce.luisbrb.com.br"
+     website: "https://ecommerce.luisbrb.com.br"
    },
    {
      titulo: "Chat Tempo Real",

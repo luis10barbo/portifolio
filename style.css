@@ -2,8 +2,14 @@
     box-sizing: border-box;
   }
   
-  
+h3, h2 {
+  margin: 0;
+  font-weight: normal;
+}
 
+h3 {
+  font-size: 1.3em;
+}
    :root {
     --radius-default: 6px;
 
@@ -27,12 +33,12 @@
    }
 
    html {
-     font-family: 'Inter', sans-serif;
+     font-family: "Roboto", "Outfit", 'Inter', sans-serif;
 
    } 
 
    html, body {
-    background: var(--clr-primary);
+    background: var(--clr-compl);
     width: 100%;
     height: 100%;
     margin: 0;
@@ -72,9 +78,9 @@
    }
 
    .frame-imagem {
-     min-width:302px;
-     width:302px;
-     height: 302px;
+     min-width:275px;
+     width:275px;
+     height: 275px;
      aspect-ratio:1;
 
 
@@ -90,11 +96,12 @@
    }
 
    .nome {
-     font-size: 32px;
+     font-size: 28px;
+     font-family: "Outfit", "Roboto", "sans-serif";
    }
 
    .profissao {
-     font-size: 24px;
+     font-size: 20px;
    }
 
    .resumo-holder {
@@ -113,6 +120,12 @@
      border-radius: 10px;
    }
 
+   .metadata-holder {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+   }
+
    .botao-holder {
      display:flex;
      flex-direction: column;
@@ -127,12 +140,21 @@
      align-items:center;
      border: none;
      outline: none;
-     padding: 10px;
+     padding: 12px;
 
      font-size: 16px;
      background-color: var(--clr-important);
      color: var(--clr-on-important);
      border-radius: 5px;
+   }
+   .botao-header.verde {
+    background-color: #E5FFE0;
+   }
+   .botao-header.vermelho {
+    background-color: #FFE2E0;
+   }
+   .botao-header.marrom {
+    background-color: #FFF8E0;
    }
 
    .icone-botao {
@@ -147,21 +169,29 @@
      max-width: fit-content;
      gap: 20px;
      /* margin:100px; */
-     background-color: var(--clr-compl);
-     box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+     /* background-color: var(--clr-compl); */
+     /* box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15); */
      padding: 20px;
      margin:40px 0 40px 40px;
      border-radius: var(--radius-default);
    }
 
-   .metadata-holder {
+   .sidebar-holder {
      display:flex;
      flex-direction: column;
      gap:20px;
    }
 
+   .linguagem-holder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   }
+
    .titulo-secao {
-     font-size: 36px;
+     font-size: 28px;
+     font-weight: bold;
+     font-family: "Outfit", "Roboto", "sans-serif";
    }
 
    .projeto-holder {
@@ -315,7 +345,7 @@
 
    .titulo-secao {
      padding-left: 40px;
-     padding-top: 40px;
+     padding-top: 60px;
      /* padding-bottom: 40px; */
    }
 
@@ -327,7 +357,7 @@
    }
 
    .secao-projetos {
-    height: 100vh;
+    height: 100%;
     overflow-y: scroll;
 
    }
@@ -356,7 +386,7 @@
     background-color: white;
     z-index: 100;
     animation-name: goto-top;
-    animation-duration: 3s;
+    animation-duration: 0s; /* 3s */
     animation-fill-mode: forwards;
     font-size: 36px;
    }

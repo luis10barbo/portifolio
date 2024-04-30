@@ -374,6 +374,7 @@ h3 {
    }
 
    .bem-vindo {
+    padding:20px;
     display: flex;
     flex-direction: column;
     justify-content: center;

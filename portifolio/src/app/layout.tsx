@@ -13,7 +13,7 @@ import Header from "@/components/Header";
 //   subsets: ["latin"],
 // });
 
-const outfit = Outfit({weight: "variable"})
+const outfit = Outfit({weight: "variable", subsets:["latin"]})
 
 export const metadata: Metadata = {
   title: "Create Next App",

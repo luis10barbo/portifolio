@@ -2,13 +2,13 @@
 import { projetos } from "@/data/data";
 import Button from "./Button";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function CarrosselProjetos() {
   const [projetoAtual, setProjetoAtual] = useState<number>(0);
   const [nextInterval, setNextInterval] = useState<NodeJS.Timeout>()
 
-  function proximoProjeto() {
+  const proximoProjeto = useCallback(() => {
     setProjetoAtual((anterior) => {
       if (projetos.length - 1 === anterior) {
         // ultimo projeto
@@ -16,7 +16,7 @@ export default function CarrosselProjetos() {
       }
       return anterior + 1;
     });
-  }
+  }, []);
 
 //   function anteriorProjeto() {
 //     setProjetoAtual((anterior) => {
@@ -28,20 +28,20 @@ export default function CarrosselProjetos() {
 //     });
 //   }
 
-  function pararIntervalo() {
+  const pararIntervalo = useCallback(() => {
     clearInterval(nextInterval)
-  }
+  }, [nextInterval]);
 
-  function criarIntervalo() {
+  const criarIntervalo = useCallback(() => {
     pararIntervalo();
     setNextInterval(setInterval(() => {
         proximoProjeto()
     }, 3000));
-  }
+  }, [pararIntervalo, proximoProjeto]);
 
   useEffect(() => {
     criarIntervalo();
-  }, [])
+  }, []); // eslint-disable-line
 
   return (
     <>

@@ -4,6 +4,16 @@ import Button from "@/components/Button";
 import LanguageContainer from "@/components/LanguageContainer";
 import CarrosselProjetos from "@/components/CarrosselProjetos";
 
+import Brazil from "@/../public/bandeiras/brazil.svg"
+import Uk from "@/../public/bandeiras/uk.svg"
+import Spain from "@/../public/bandeiras/spain.svg"
+
+import LinkedIn from "@/../public/icons/linkedin.svg"
+import Whatsapp from "@/../public/icons/whatsapp.svg"
+import Email from "@/../public/icons/email.svg"
+import Cellphone from "@/../public/icons/cellphone.svg"
+
+
 export default function Home() {
   const habilidades: {tipo: string, valores?: string[]}[] = [
     {tipo: "Linguagens", valores: ["Python", "Typescript", "Java", "PHP"]},
@@ -39,9 +49,9 @@ export default function Home() {
             </div>
             <div id="linguagens" className="flex flex-col gap-4 flex-1">
               <h3 className="text-neutral-800 text-5xl"><b>Linguagens</b></h3>
-              <LanguageContainer lingua="Português" nivel="Nativo" className="bg-green-50"/>
-              <LanguageContainer lingua="Inglês" nivel="Avançado" className="bg-blue-50"/>
-              <LanguageContainer lingua="Espanhol" nivel="Básico" className="bg-yellow-50"/>
+              <LanguageContainer lingua="Português" nivel="Nativo" className="bg-green-50" bandeira={Brazil}/>
+              <LanguageContainer lingua="Inglês" nivel="Avançado" className="bg-blue-50" bandeira={Uk}/>
+              <LanguageContainer lingua="Espanhol" nivel="Básico" className="bg-yellow-50" bandeira={Spain}/>
             </div>
           </section>
 
@@ -60,10 +70,10 @@ export default function Home() {
               </div>
               
               <div id="contatos" className="flex-1 gap-4 flex flex-col items-end">
-                <Button className="bg-blue-100 w-[400px] text-left px-6 py-4">LinkedIn</Button>
-                <Button className="bg-green-100 w-[400px] text-left px-6 py-4">Whatsapp</Button>
-                <Button className="w-[400px] text-left px-6 py-4">E-mail</Button>
-
+                <Button className="bg-blue-100 w-[400px] text-left px-6 py-4" icone={LinkedIn} href="https://www.linkedin.com/in/luis-eduardo-832957265/">LinkedIn</Button>
+                <Button className="bg-green-100 w-[400px] text-left px-6 py-4" icone={Whatsapp} href="https://wa.me/5121980863457">Whatsapp</Button>
+                <Button className="w-[400px] text-left px-6 py-4 bg-neutral-200" icone={Email} href="mailto:luis10barbo2020@gmail.com">E-mail</Button>
+                <Button className="w-[400px] text-left px-6 py-4 bg-neutral-100" icone={Cellphone} copiarTexto="51 21980863457">Copiar número de celular</Button>
               </div>
           </section>
         </div>

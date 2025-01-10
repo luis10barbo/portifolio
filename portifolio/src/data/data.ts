@@ -22,7 +22,7 @@ export const StatusProjeto = {
 };
 export const projetos = [
   {
-    titulo: "Ecommerce",
+    titulo: "E-commerce",
     descricao: "Site de Ecommerce generico",
     tecFront: [Tecnologias.ANGULAR],
     tecBack: [Tecnologias.SPRING, Tecnologias.POSTGRES],

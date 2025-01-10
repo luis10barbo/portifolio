@@ -31,7 +31,7 @@ export default function Home() {
             <div id="texto-apresentacao" className="flex flex-col gap-4">
               <h2 className="text-9xl"><b>Olá,</b></h2>
               <h3 className="text-7xl text-neutral-800">Eu sou <b>Luís Eduardo</b></h3>
-              <h4 className="text-5xl text-neutral-600">Seu futuro <span className="text-green-700">desenvolvedor</span>.</h4>
+              <h4 className="text-5xl text-neutral-600">Seu futuro <b><span className="text-green-700">desenvolvedor</span></b>.</h4>
             </div>
             <Image alt="" src={imagem} width={400} height={400} className="rounded-full overflow-hidden shadow-lg"></Image>
           </section>

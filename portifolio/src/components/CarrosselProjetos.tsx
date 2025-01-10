@@ -18,15 +18,15 @@ export default function CarrosselProjetos() {
     });
   }
 
-  function anteriorProjeto() {
-    setProjetoAtual((anterior) => {
-      if (anterior === 0) {
-        // primeiro projeto
-        return projetos.length - 1;
-      }
-      return anterior - 1;
-    });
-  }
+//   function anteriorProjeto() {
+//     setProjetoAtual((anterior) => {
+//       if (anterior === 0) {
+//         // primeiro projeto
+//         return projetos.length - 1;
+//       }
+//       return anterior - 1;
+//     });
+//   }
 
   function pararIntervalo() {
     clearInterval(nextInterval)

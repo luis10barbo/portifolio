@@ -40,7 +40,7 @@ export default function CarrosselProjetos() {
   }
 
   useEffect(() => {
-    
+    criarIntervalo();
   }, [])
 
   return (

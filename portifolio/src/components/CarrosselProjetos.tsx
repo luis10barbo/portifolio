@@ -70,10 +70,10 @@ export default function CarrosselProjetos() {
             }}
           >
             <div className="overlay z-20 w-full absolute h-full">
-              <Button className="bg-black absolute top-0 right-0 m-4 text-xl text-white border-none">
+              <Button className="bg-black absolute top-0 right-0 m-4 text-base sm:text-xl text-white border-none">
                 Acessar
               </Button>
-              <h3 className="text-black stroke-black stroke-1 text-5xl absolute bottom-0 m-4 drop-shadow-xl">
+              <h3 className="text-black stroke-black stroke-1 text-2xl sm:text-5xl absolute bottom-0 m-4 drop-shadow-xl">
                 {projeto.titulo}
               </h3>
             </div>

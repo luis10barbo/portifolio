@@ -1,8 +1,9 @@
 "use client";
-import { InfoTecnologia, projetos, Tecnologias } from "@/data/data";
+import { InfoTecnologia, projetos } from "@/data/data";
 import Button from "./Button";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function CarrosselProjetos() {
   const [projetoAtual, setProjetoAtual] = useState<number>(0);
@@ -45,6 +46,8 @@ export default function CarrosselProjetos() {
     criarIntervalo();
   }, []); // eslint-disable-line
 
+  const t = useTranslations('Index');
+
   return (
     <>
       <div className="button-container absolute bottom-12 z-30 flex gap-4 w-full justify-center">
@@ -84,14 +87,14 @@ export default function CarrosselProjetos() {
                   className="bg-black text-base sm:text-xl text-white border-none shadow-md"
                   href={projeto.website}
                 >
-                  Acessar
+                  {t("acessar")}
                 </Button>
                 {projeto.repo ? (
                   <Button
                     className="bg-black text-base sm:text-xl text-white border-none shadow-md"
                     href={projeto.repo}
                   >
-                    Repositorio
+                    {t("repositorio")}
                   </Button>
                 ) : ( 
                   <></>

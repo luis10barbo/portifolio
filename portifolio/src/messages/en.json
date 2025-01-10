@@ -1,0 +1,34 @@
+{
+    "Index": {
+      "apresentacao1": "Hello,",
+      "apresentacao2": "I'm",
+      "nome": "Luís Eduardo",
+      "apresentacao3": "Your future",
+      "apresentacao4": "developer",
+
+      "habilidades": "Skills",
+      "linguagens": "Languages",
+      "frameworks": "Frameworks",
+      "bancoDeDados": "Databases",
+      "versionamento": "Versioning",
+      "sistemasOperacionais": "Operational Systems",
+      
+      "portugues": "Portuguese",
+      "ingles": "English",
+      "espanhol": "Spanish",
+
+      "nativo": "Native",
+      "avancado": "Advanced",
+      "basico": "Basic",
+
+      "projetos": "Projects",
+      "acessar": "Access",
+      "repositorio": "Repository",
+
+      "conclusao1": "So,",
+      "conclusao2": "Caught your interest?",
+      "conclusao3": "Contact me :)",
+
+      "copiarNumeroCelular": "Copy Cellphone Number"
+    }
+  }

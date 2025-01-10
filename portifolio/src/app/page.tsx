@@ -70,10 +70,9 @@ export default function Home() {
                 <h3 className="text-4xl md:text-5xl lg:text-7xl text-neutral-800">Se interessou?</h3>
                 <h4 className="text-2xl md:text-4xl lg:text-5xl text-neutral-600">Entre em contato comigo :)</h4>
               </div>
-              
               <div id="contatos" className="sm:flex-1 gap-4 flex flex-col items-end w-full">
                 <Button className="bg-blue-100 w-full lg:w-[400px] text-left px-6 py-4" icone={LinkedIn} href="https://www.linkedin.com/in/luis-eduardo-832957265/">LinkedIn</Button>
-                <Button className="bg-green-100 w-full lg:w-[400px] text-left px-6 py-4" icone={Whatsapp} href="https://wa.me/5121980863457">Whatsapp</Button>
+                <Button className="bg-green-100 w-full lg:w-[400px] text-left px-6 py-4" icone={Whatsapp} href="https://api.whatsapp.com/send?phone=5121980863457" hrefCelular="whatsapp://send?phone=5121980863457">Whatsapp</Button>
                 <Button className="lg:w-[400px] w-full text-left px-6 py-4 bg-neutral-200" icone={Email} href="mailto:luis10barbo2020@gmail.com">E-mail</Button>
                 <Button className="lg:w-[400px] w-full text-left px-6 py-4 bg-neutral-100" icone={Cellphone} copiarTexto="51 21980863457">Copiar número de celular</Button>
               </div>

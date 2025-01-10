@@ -2,6 +2,7 @@ import Image from "next/image";
 import imagem from "@/../public/yo.jpg"
 import Button from "@/components/Button";
 import LanguageContainer from "@/components/LanguageContainer";
+import CarrosselProjetos from "@/components/CarrosselProjetos";
 
 export default function Home() {
   const habilidades: {tipo: string, valores?: string[]}[] = [
@@ -46,12 +47,9 @@ export default function Home() {
 
           <section id="section-projetos" className="flex flex-col justify-between gap-8">
             <h3 className="text-neutral-800 text-5xl"><b>Projetos</b></h3>
-            <div className="content-holder h-[695px] w-full relative">
-              <div className="h-[695px] w-full bg-black absolute"></div>
-              <div className="h-[695px] w-full bg-neutral-800 absolute" style={{transform:"translateX(-100%)"}}></div>
-              <div className="h-[695px] w-full bg-neutral-800 absolute" style={{transform:"translateX(100%)"}}></div>
+            <div className="content-holder h-[695px] w-full relative overflow-hidden rounded-3xl shadow-2xl">
+              <CarrosselProjetos/>
             </div>
-            
           </section>
 
           <section id="section-contato" className="flex h-screen items-center">

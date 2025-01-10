@@ -1,12 +1,12 @@
 "use client";
-import { projetos } from "@/data/data";
+import { InfoTecnologia, projetos, Tecnologias } from "@/data/data";
 import Button from "./Button";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 export default function CarrosselProjetos() {
   const [projetoAtual, setProjetoAtual] = useState<number>(0);
-  const [nextInterval, setNextInterval] = useState<NodeJS.Timeout>()
+  const [nextInterval, setNextInterval] = useState<NodeJS.Timeout>();
 
   const proximoProjeto = useCallback(() => {
     setProjetoAtual((anterior) => {
@@ -18,25 +18,27 @@ export default function CarrosselProjetos() {
     });
   }, []);
 
-//   function anteriorProjeto() {
-//     setProjetoAtual((anterior) => {
-//       if (anterior === 0) {
-//         // primeiro projeto
-//         return projetos.length - 1;
-//       }
-//       return anterior - 1;
-//     });
-//   }
+  //   function anteriorProjeto() {
+  //     setProjetoAtual((anterior) => {
+  //       if (anterior === 0) {
+  //         // primeiro projeto
+  //         return projetos.length - 1;
+  //       }
+  //       return anterior - 1;
+  //     });
+  //   }
 
   const pararIntervalo = useCallback(() => {
-    clearInterval(nextInterval)
+    clearInterval(nextInterval);
   }, [nextInterval]);
 
   const criarIntervalo = useCallback(() => {
     pararIntervalo();
-    setNextInterval(setInterval(() => {
-        proximoProjeto()
-    }, 3000));
+    setNextInterval(
+      setInterval(() => {
+        proximoProjeto();
+      }, 3000)
+    );
   }, [pararIntervalo, proximoProjeto]);
 
   useEffect(() => {
@@ -47,16 +49,23 @@ export default function CarrosselProjetos() {
     <>
       <div className="button-container absolute bottom-12 z-30 flex gap-4 w-full justify-center">
         {projetos.map((projeto, i) => {
-            return <button
-            onMouseEnter={() => {
+          return (
+            <button
+              onMouseEnter={() => {
                 pararIntervalo();
-            }}
-            onMouseLeave={() => {
+              }}
+              onMouseLeave={() => {
                 criarIntervalo();
-            }}
-            onClick={() => { 
+              }}
+              onClick={() => {
                 setProjetoAtual(i);
-            }} className={`w-4 h-4 shadow-md ${projetoAtual === i ? "bg-neutral-900" : "bg-neutral-500"} rounded-full`} key={projeto.titulo}/>
+              }}
+              className={`w-4 h-4 shadow-md ${
+                projetoAtual === i ? "bg-neutral-900" : "bg-neutral-500"
+              } rounded-full`}
+              key={projeto.titulo}
+            />
+          );
         })}
       </div>
 
@@ -69,13 +78,37 @@ export default function CarrosselProjetos() {
               transform: `translateX(${100 * i - 100 * projetoAtual}%)`,
             }}
           >
-            <div className="overlay z-20 w-full absolute h-full">
-              <Button className="bg-black absolute top-0 right-0 m-4 text-base sm:text-xl text-white border-none">
-                Acessar
-              </Button>
-              <h3 className="text-black stroke-black stroke-1 text-2xl sm:text-5xl absolute bottom-0 m-4 drop-shadow-xl">
-                {projeto.titulo}
-              </h3>
+            <div className="overlay z-20 w-full absolute h-full ">
+              <div className="botoes-topo absolute left-4 top-24 sm:left-auto sm:top-4 sm:right-4 flex gap-2">
+                <Button
+                  className="bg-black text-base sm:text-xl text-white border-none shadow-md"
+                  href={projeto.website}
+                >
+                  Acessar
+                </Button>
+                {projeto.repo ? (
+                  <Button
+                    className="bg-black text-base sm:text-xl text-white border-none shadow-md"
+                    href={projeto.repo}
+                  >
+                    Repositorio
+                  </Button>
+                ) : ( 
+                  <></>
+                )}
+              </div>
+              <div className="projeto-metadata absolute top-4 left-4 bg-black text-white px-4 py-2 rounded-md shadow-md">
+                <div className="tecnologias flex gap-2">
+                {projeto.tecBack.concat(projeto.tecFront).map((tec) => {
+                  return <span key={tec} className="text-base sm:text-2xl">{InfoTecnologia[tec].titulo}</span>
+                })}
+                </div>
+                
+                
+                <h3 className=" stroke-black stroke-1 text-2xl sm:text-5xl ">
+                  {projeto.titulo}
+                </h3>
+              </div>
             </div>
 
             {/* <div className="absolute bg-black/30 z-10 h-full w-full"></div> */}

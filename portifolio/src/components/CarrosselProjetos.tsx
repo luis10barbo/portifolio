@@ -8,6 +8,8 @@ import { useTranslations } from "next-intl";
 export default function CarrosselProjetos() {
   const [projetoAtual, setProjetoAtual] = useState<number>(0);
   const [nextInterval, setNextInterval] = useState<NodeJS.Timeout>();
+  const [intervalo, setIntervalo] = useState(0);
+  const tempoParaTrocar = 3000;
 
   const proximoProjeto = useCallback(() => {
     setProjetoAtual((anterior) => {
@@ -19,26 +21,24 @@ export default function CarrosselProjetos() {
     });
   }, []);
 
-  //   function anteriorProjeto() {
-  //     setProjetoAtual((anterior) => {
-  //       if (anterior === 0) {
-  //         // primeiro projeto
-  //         return projetos.length - 1;
-  //       }
-  //       return anterior - 1;
-  //     });
-  //   }
-
   const pararIntervalo = useCallback(() => {
     clearInterval(nextInterval);
   }, [nextInterval]);
 
   const criarIntervalo = useCallback(() => {
     pararIntervalo();
+    const delay = 100;
     setNextInterval(
       setInterval(() => {
-        proximoProjeto();
-      }, 3000)
+        setIntervalo((antigo) => {
+          const novoValor = antigo + delay;
+          if (novoValor >= tempoParaTrocar) {
+            proximoProjeto();
+            return 0;
+          };
+          return antigo + delay; 
+        });
+      }, delay)
     );
   }, [pararIntervalo, proximoProjeto]);
 
@@ -49,17 +49,19 @@ export default function CarrosselProjetos() {
   const t = useTranslations('Index');
 
   return (
-    <>
-      <div className="button-container absolute bottom-12 z-30 flex gap-4 w-full justify-center">
+    <div
+    onMouseEnter={() => {
+      pararIntervalo();
+    }}
+    onMouseLeave={() => {
+      criarIntervalo();
+    }}
+    >
+      <div className="button-container absolute bottom-12 z-30 flex gap-4 w-full justify-center" >
         {projetos.map((projeto, i) => {
           return (
             <button
-              onMouseEnter={() => {
-                pararIntervalo();
-              }}
-              onMouseLeave={() => {
-                criarIntervalo();
-              }}
+              
               onClick={() => {
                 setProjetoAtual(i);
               }}
@@ -71,7 +73,7 @@ export default function CarrosselProjetos() {
           );
         })}
       </div>
-
+      <div className="bottom-0 absolute bg-green-200 h-2 z-30 duration-200" style={{width: `${(intervalo / tempoParaTrocar) * 100}%`}}></div>
       {projetos.map((projeto, i) => {
         return (
           <div
@@ -126,6 +128,6 @@ export default function CarrosselProjetos() {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

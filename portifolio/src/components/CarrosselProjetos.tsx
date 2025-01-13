@@ -4,15 +4,16 @@ import Button from "./Button";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function CarrosselProjetos() {
-  const [projetoAtual, setProjetoAtual] = useState<number>(0);
+  const [iProjetoAtual, setIProjetoAtual] = useState<number>(0);
   const [nextInterval, setNextInterval] = useState<NodeJS.Timeout>();
   const [intervalo, setIntervalo] = useState(0);
-  const tempoParaTrocar = 3000;
+  const tempoParaTrocar = 9999999;
 
   const proximoProjeto = useCallback(() => {
-    setProjetoAtual((anterior) => {
+    setIProjetoAtual((anterior) => {
       if (projetos.length - 1 === anterior) {
         // ultimo projeto
         return 0;
@@ -47,7 +48,7 @@ export default function CarrosselProjetos() {
   }, []); // eslint-disable-line
 
   const t = useTranslations('Index');
-
+  const projetoAtual = projetos.at(iProjetoAtual);
   return (
     <div
     onMouseEnter={() => {
@@ -57,16 +58,17 @@ export default function CarrosselProjetos() {
       criarIntervalo();
     }}
     >
+      
       <div className="button-container absolute bottom-12 z-30 flex gap-4 w-full justify-center" >
         {projetos.map((projeto, i) => {
           return (
             <button
               
               onClick={() => {
-                setProjetoAtual(i);
+                setIProjetoAtual(i);
               }}
               className={`w-4 h-4 shadow-md ${
-                projetoAtual === i ? "bg-neutral-900" : "bg-neutral-500"
+                iProjetoAtual === i ? "bg-neutral-900" : "bg-neutral-500"
               } rounded-full`}
               key={projeto.titulo}
             />
@@ -80,10 +82,12 @@ export default function CarrosselProjetos() {
             key={projeto.titulo}
             className="h-[695px] w-full bg-white absolute duration-150 rounded-3xl overflow-hidden"
             style={{
-              transform: `translateX(${100 * i - 100 * projetoAtual}%)`,
+              transform: `translateX(${100 * i - 100 * iProjetoAtual}%)`,
             }}
           >
-            <div className="overlay z-20 w-full absolute h-full ">
+            <Link href={projetoAtual?.id ? `./p/${projetoAtual.id}` : "#"} className="absolute w-full h-full z-30 hover:bg-black/5 duration-75"/>
+
+            <div className="overlay z-40 w-full absolute">
               <div className="botoes-topo absolute left-4 top-24 sm:left-auto sm:top-4 sm:right-4 flex gap-2">
               {projeto.website ? <Button
                   className="bg-black text-base sm:text-xl text-white border-none shadow-md"

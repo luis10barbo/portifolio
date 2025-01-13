@@ -83,12 +83,13 @@ export default function CarrosselProjetos() {
           >
             <div className="overlay z-20 w-full absolute h-full ">
               <div className="botoes-topo absolute left-4 top-24 sm:left-auto sm:top-4 sm:right-4 flex gap-2">
-                <Button
+              {projeto.website ? <Button
                   className="bg-black text-base sm:text-xl text-white border-none shadow-md"
                   href={projeto.website}
                 >
                   {t("acessar")}
-                </Button>
+                </Button>: <></>}
+                
                 {projeto.repo ? (
                   <Button
                     className="bg-black text-base sm:text-xl text-white border-none shadow-md"

@@ -2,6 +2,10 @@ import Ecommerce from "@/../public/projetos/ecommerce.png"
 import Chat from "@/../public/projetos/chat.png"
 import Gstock from "@/../public/projetos/gstock.png"
 import GeradorTreino from "@/../public/projetos/geradortreino.jpeg"
+import Portifolio from "@/../public/projetos/portifolio.png"
+import Vector from "@/../public/projetos/transporte.jpeg"
+
+
 
 
 export const Tecnologias = {
@@ -14,6 +18,9 @@ export const Tecnologias = {
   SQLITE: 7,
   POSTGRES: 8,
   ANDROID: 9,
+  NEXT:10,
+  REACT:11,
+  NODE: 12,
 };
 export const StatusProjeto = {
   PROGRESSO: 1,
@@ -21,6 +28,36 @@ export const StatusProjeto = {
   COMPLETO: 3,
 };
 export const projetos = [
+  {
+    titulo: "Portifólio",
+    descricao: "Meu portifólio",
+    tecFront: [Tecnologias.NEXT, Tecnologias.REACT],
+    tecBack: [],
+    statusProjeto: StatusProjeto.PROGRESSO,
+    imgProjeto:
+      Portifolio,
+    repo: "https://github.com/luis10barbo/portifolio",
+    website: "https://luisbrb.com.br", 
+  },
+  {
+    titulo: "VectorApp",
+    descricao: "Aplicativo de transporte público",
+    tecFront: [Tecnologias.ANDROID],
+    tecBack: [Tecnologias.NODE],
+    statusProjeto: StatusProjeto.PROGRESSO,
+    imgProjeto:
+      Vector,
+    repo: "https://github.com/LucasLima004/Vector_mobile_app",
+  },
+  {
+    titulo: "Gerador de Treino",
+    descricao:
+      "Aplicativo Mobile com funcionalidade completa para gerenciar rotinas de exercicios fisicos de clientes",
+    tecFront: [Tecnologias.ANDROID],
+    tecBack: [Tecnologias.SQLITE],
+    statusProjeto: StatusProjeto.COMPLETO,
+    imgProjeto: GeradorTreino,
+  },
   {
     titulo: "E-commerce",
     descricao: "Site de Ecommerce generico",
@@ -33,14 +70,14 @@ export const projetos = [
     website: "https://ecommerce.luisbrb.com.br",
   },
   {
-    titulo: "Chat Tempo Real",
+    titulo: "Chat APP",
     descricao: "Chat em tempo real inspirado por whatsapp",
     tecFront: [Tecnologias.SVELTE],
     tecBack: [Tecnologias.RUST, Tecnologias.SQLITE],
     statusProjeto: StatusProjeto.PROGRESSO,
     imgProjeto: Chat,
     repo: "https://github.com/luis10barbo/chatapp",
-    website: "https://chat.luisbrb.com.br/",
+    // website: "https://chat.luisbrb.com.br/",
   },
   {
     titulo: "GStock",
@@ -54,21 +91,24 @@ export const projetos = [
     download:
       "https://github.com/luis10barbo/GStock/releases/download/1.0/EstoqueSwing-1.0.jar",
   },
-  {
-    titulo: "Gerador de Treino",
-    descricao:
-      "Aplicativo Mobile com funcionalidade completa para gerenciar rotinas de exercicios fisicos de clientes",
-    tecFront: [Tecnologias.ANDROID],
-    tecBack: [Tecnologias.SQLITE],
-    statusProjeto: StatusProjeto.COMPLETO,
-    imgProjeto: GeradorTreino,
-  },
 ];
 
 export const InfoTecnologia = {
   [Tecnologias.SVELTE]: {
     img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
     titulo: "Svelte",
+  },
+  [Tecnologias.NODE]: {
+    img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
+    titulo: "NodeJS",
+  },
+  [Tecnologias.NEXT]: {
+    img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
+    titulo: "NextJS",
+  },
+  [Tecnologias.REACT]: {
+    img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
+    titulo: "React",
   },
   [Tecnologias.SPRING]: {
     img: "https://www.svgrepo.com/download/376350/spring.svg",

@@ -118,8 +118,8 @@ export default function CarrosselProjetos() {
             {/* <div className="absolute bg-black/30 z-10 h-full w-full"></div> */}
             <Image
               className="absolute h-full w-full object-contain "
-              src={projeto.imgProjeto}
-              alt={projeto.descricao}
+              src={projeto.imgProjeto[0]}
+              alt={projeto.descricao ? projeto.descricao : `imagem projeto ${projeto.imgProjeto}`}
               width={"1280"}
               height={"720"}
             />

@@ -4,6 +4,7 @@ import Gstock from "@/../public/projetos/gstock.png"
 import GeradorTreino from "@/../public/projetos/geradortreino.jpeg"
 import Portifolio from "@/../public/projetos/portifolio.png"
 import Vector from "@/../public/projetos/transporte.jpeg"
+import { StaticImport } from "next/dist/shared/lib/get-img-props"
 
 
 
@@ -27,66 +28,72 @@ export const StatusProjeto = {
   INCOMPLETO: 2,
   COMPLETO: 3,
 };
-export const projetos = [
+export const projetos: {id: string, titulo: string, descricao?:string, tecFront: number[], tecBack: number[], statusProjeto: number, imgProjeto: StaticImport[], repo?: string, website?: string, download?: string}[] = [
   {
+    id:"portifolio",
     titulo: "Portifólio",
     descricao: "Meu portifólio",
     tecFront: [Tecnologias.NEXT, Tecnologias.REACT],
     tecBack: [],
     statusProjeto: StatusProjeto.PROGRESSO,
     imgProjeto:
-      Portifolio,
+      [Portifolio],
     repo: "https://github.com/luis10barbo/portifolio",
     website: "https://luisbrb.com.br", 
   },
   {
+    id:"vector",
     titulo: "VectorApp",
     descricao: "Aplicativo de transporte público",
     tecFront: [Tecnologias.ANDROID],
     tecBack: [Tecnologias.NODE],
     statusProjeto: StatusProjeto.PROGRESSO,
     imgProjeto:
-      Vector,
+      [Vector],
     repo: "https://github.com/LucasLima004/Vector_mobile_app",
   },
   {
+    id:"treino",
     titulo: "Gerador de Treino",
     descricao:
       "Aplicativo Mobile com funcionalidade completa para gerenciar rotinas de exercicios fisicos de clientes",
     tecFront: [Tecnologias.ANDROID],
     tecBack: [Tecnologias.SQLITE],
     statusProjeto: StatusProjeto.COMPLETO,
-    imgProjeto: GeradorTreino,
+    imgProjeto: [GeradorTreino],
   },
   {
+    id:"ecommerce",
     titulo: "E-commerce",
     descricao: "Site de Ecommerce generico",
     tecFront: [Tecnologias.ANGULAR],
     tecBack: [Tecnologias.SPRING, Tecnologias.POSTGRES],
     statusProjeto: StatusProjeto.PROGRESSO,
     imgProjeto:
-      Ecommerce,
+      [Ecommerce],
     repo: "https://github.com/luis10barbo/loja-spring",
     website: "https://ecommerce.luisbrb.com.br",
   },
   {
+    id:"chat",
     titulo: "Chat APP",
     descricao: "Chat em tempo real inspirado por whatsapp",
     tecFront: [Tecnologias.SVELTE],
     tecBack: [Tecnologias.RUST, Tecnologias.SQLITE],
     statusProjeto: StatusProjeto.PROGRESSO,
-    imgProjeto: Chat,
+    imgProjeto: [Chat],
     repo: "https://github.com/luis10barbo/chatapp",
     // website: "https://chat.luisbrb.com.br/",
   },
   {
+    id:"gstock",
     titulo: "GStock",
     descricao: "Gerenciador de Estoque generico feito em Java",
     tecFront: [Tecnologias.SWING],
     tecBack: [Tecnologias.SQLITE],
     statusProjeto: StatusProjeto.COMPLETO,
     imgProjeto:
-      Gstock,
+      [Gstock],
     repo: "https://github.com/luis10barbo/GStock",
     download:
       "https://github.com/luis10barbo/GStock/releases/download/1.0/EstoqueSwing-1.0.jar",

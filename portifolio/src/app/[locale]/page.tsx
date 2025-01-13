@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <main className="flex justify-center overflow-x-hidden">
         <div className="page-content  w-[333px] sm:w-full lg:w-[1280px] flex flex-col gap-12 lg:gap-36 sm:p-8 2xl:p-16">
-          <section id="section-apresentacao" className="flex flex-col-reverse sm:flex-row lg:justify-between h-screen items-center justify-center gap-16">
+          <section id="section-apresentacao" className="flex flex-col-reverse sm:flex-row lg:justify-between h-screen min-h-550px] items-center justify-center gap-16">
             <div id="texto-apresentacao" className="flex flex-col gap-4 md:w-full">
               <h2 className="text-5xl md:text-7xl lg:text-9xl"><b>{t("apresentacao1")}</b></h2>
               <h3 className="text-4xl md:text-5xl lg:text-7xl text-neutral-800 text-nowrap">{t("apresentacao2")} <b>{t("nome")}</b></h3>

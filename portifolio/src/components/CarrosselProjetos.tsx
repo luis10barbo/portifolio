@@ -4,7 +4,7 @@ import Button from "./Button";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import {Link} from "@/i18n/routing";
 
 export default function CarrosselProjetos() {
   const [iProjetoAtual, setIProjetoAtual] = useState<number>(0);
@@ -85,7 +85,7 @@ export default function CarrosselProjetos() {
               transform: `translateX(${100 * i - 100 * iProjetoAtual}%)`,
             }}
           >
-            <Link href={projetoAtual?.id ? `./p/${projetoAtual.id}` : "#"} className="absolute w-full h-full z-30 hover:bg-black/5 duration-75"/>
+            <Link href={projetoAtual?.id ? `/proj/${projetoAtual.id}` : "#"} className="absolute w-full h-full z-30 hover:bg-black/5 duration-75"/>
 
             <div className="overlay z-40 w-full absolute">
               <div className="botoes-topo absolute left-4 top-24 sm:left-auto sm:top-4 sm:right-4 flex gap-2">

@@ -1,5 +1,5 @@
 import { projetos } from "@/data/data"
-import Image from "next/image";
+// import Image from "next/image";
 
 export default async function ProjetoPage({params}: {params: Promise<{id: string}>}) {
     const paramsAwaited = await params;

@@ -10,7 +10,7 @@ export default function CarrosselProjetos() {
   const [iProjetoAtual, setIProjetoAtual] = useState<number>(0);
   const [nextInterval, setNextInterval] = useState<NodeJS.Timeout>();
   const [intervalo, setIntervalo] = useState(0);
-  const tempoParaTrocar = 9999999;
+  const tempoParaTrocar = 3000;
 
   const proximoProjeto = useCallback(() => {
     setIProjetoAtual((anterior) => {

@@ -23,6 +23,7 @@ export default function CarrosselProjetos() {
   }, []);
 
   const pararIntervalo = useCallback(() => {
+    // console.log("teste")
     clearInterval(nextInterval);
   }, [nextInterval]);
 

@@ -71,6 +71,7 @@ export default function CarrosselProjetos() {
               
               onClick={() => {
                 setIProjetoAtual(i);
+                setIntervalo(0);
               }}
               className={`w-4 h-4 shadow-md ${
                 iProjetoAtual === i ? "bg-neutral-900" : "bg-neutral-500"

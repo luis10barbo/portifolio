@@ -12,7 +12,7 @@ export function generateStaticParams() {
 export default function Header({locale}: {locale: string}) {
     const t = useTranslations('Index');
     
-    return <header className="p-2 lg:p-8 flex flex-row-reverse fixed top-0 w-full bg-[rgba(255,255,255,0.8)] backdrop-blur-[60px] z-50">
+    return <header className="p-2 lg:py-4 lg:px-8 flex flex-row-reverse fixed top-0 w-full bg-[rgba(255,255,255,0.8)] backdrop-blur-[60px] z-50">
         {locale === "pt" ? 
         <Link href={"/en"}>
             <Button id="language-button" className="text-base px-4 py-2 bg-green-200 border border-neutral-200 " icone={Brazil}>{t("portugues")}</Button>

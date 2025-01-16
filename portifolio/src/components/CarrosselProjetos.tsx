@@ -23,29 +23,33 @@ export default function CarrosselProjetos() {
   }, []);
 
   const pararIntervalo = useCallback(() => {
-    // console.log("teste")
     clearInterval(nextInterval);
   }, [nextInterval]);
 
   const criarIntervalo = useCallback(() => {
     pararIntervalo();
     const delay = 100;
+    const interval = setInterval(() => {
+      setIntervalo((antigo) => {
+        const novoValor = antigo + delay;
+        if (novoValor >= tempoParaTrocar) {
+          proximoProjeto();
+          return 0;
+        };
+        return antigo + delay; 
+      });
+    }, delay);
     setNextInterval(
-      setInterval(() => {
-        setIntervalo((antigo) => {
-          const novoValor = antigo + delay;
-          if (novoValor >= tempoParaTrocar) {
-            proximoProjeto();
-            return 0;
-          };
-          return antigo + delay; 
-        });
-      }, delay)
+      interval
     );
+    return interval;
   }, [pararIntervalo, proximoProjeto]);
 
   useEffect(() => {
-    criarIntervalo();
+    const interval = criarIntervalo();
+    return () => {
+      clearInterval(interval);
+    }
   }, []); // eslint-disable-line
 
   const t = useTranslations('Index');

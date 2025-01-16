@@ -4,6 +4,12 @@ import Gstock from "@/../public/projetos/gstock.png"
 import GeradorTreino from "@/../public/projetos/geradortreino.jpeg"
 import Portifolio from "@/../public/projetos/portifolio.png"
 import Vector from "@/../public/projetos/transporte.jpeg"
+import Vector2 from "@/../public/projetos/transporte/transporte2.jpeg"
+import Vector3 from "@/../public/projetos/transporte/transporte3.jpeg"
+import Vector4 from "@/../public/projetos/transporte/transporte4.jpeg"
+import Vector5 from "@/../public/projetos/transporte/transporte5.jpeg"
+
+
 import { StaticImport } from "next/dist/shared/lib/get-img-props"
 
 
@@ -49,7 +55,7 @@ export const projetos: {id: string, titulo: string, descricao?:string, tecFront:
     tecBack: [Tecnologias.NODE],
     statusProjeto: StatusProjeto.PROGRESSO,
     imgProjeto:
-      [Vector],
+      [Vector, Vector2, Vector3, Vector4, Vector5],
     repo: "https://github.com/LucasLima004/Vector_mobile_app",
   },
   {

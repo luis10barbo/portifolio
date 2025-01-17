@@ -10,15 +10,30 @@ export default function CarrosselProjetos() {
   const [iProjetoAtual, setIProjetoAtual] = useState<number>(0);
   const [nextInterval, setNextInterval] = useState<NodeJS.Timeout>();
   const [intervalo, setIntervalo] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [posInicialDrag, setPosInicialDrag] = useState<{x: number, y: number}>({x:0, y:0});
+  const [posAtualDrag, setPosAtualDrag] = useState<number>(0)
   const tempoParaTrocar = 3000;
 
   const proximoProjeto = useCallback(() => {
+    setIntervalo(0);
     setIProjetoAtual((anterior) => {
       if (projetos.length - 1 === anterior) {
         // ultimo projeto
         return 0;
       }
       return anterior + 1;
+    });
+  }, []);
+
+  const anteriorProjeto = useCallback(() => {
+    setIntervalo(0);
+    setIProjetoAtual((anterior) => {
+      if (0 === anterior) {
+        // ultimo projeto
+        return projetos.length - 1;
+      }
+      return anterior - 1;
     });
   }, []);
 
@@ -52,14 +67,51 @@ export default function CarrosselProjetos() {
     }
   }, []); // eslint-disable-line
 
+  const touchMoveEvent = useCallback((e: TouchEvent) => {
+    if (e.touches[0].clientY != posInicialDrag.y) {
+      e.preventDefault();
+    }
+    setPosAtualDrag(e.touches[0].clientX)
+    console.log(e.touches[0].clientX)
+  }, [])
+
+  useEffect(() => {
+    const diffParaMudar = 100;
+    if (isDragging === true) {
+      document.addEventListener("touchmove", touchMoveEvent)
+      // document.addEventListener("scroll", preventScrollEvent);
+    } else {
+      const diff = posAtualDrag - posInicialDrag.x;
+      if (diff > diffParaMudar) {
+        anteriorProjeto();
+      } else if (diff < (diffParaMudar * -1)) {
+        proximoProjeto();
+      }
+
+      document.removeEventListener("touchmove", touchMoveEvent)
+    }
+  }, [isDragging, touchMoveEvent])
+
   const t = useTranslations('Index');
   const projetoAtual = projetos.at(iProjetoAtual);
+
   return (
     <div
     onMouseEnter={() => {
       pararIntervalo();
     }}
     onMouseLeave={() => {
+      criarIntervalo();
+    }}
+
+    onTouchStart={(e) => {
+      pararIntervalo();
+      setPosInicialDrag({x: e.touches[0].clientX, y: e.touches[0].clientY});
+      setIsDragging(true);
+    }}
+
+    onTouchEnd={() => {
+      setIsDragging(false);
       criarIntervalo();
     }}
     >
@@ -88,7 +140,7 @@ export default function CarrosselProjetos() {
             key={projeto.titulo}
             className="h-[695px] w-full bg-white absolute duration-150 rounded-3xl overflow-hidden"
             style={{
-              transform: `translateX(${100 * i - 100 * iProjetoAtual}%)`,
+              transform: `translateX(calc(${(100 * i) - (100 * iProjetoAtual)}% + ${(isDragging ? posAtualDrag - posInicialDrag.x : 0)}px))`,
             }}
           >
             <Link href={projetoAtual?.id ? `/proj/${projetoAtual.id}` : "#"} className="absolute w-full h-full z-30 hover:bg-black/5 duration-75"/>

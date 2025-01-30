@@ -13,12 +13,13 @@ import Whatsapp from "@/../public/icons/whatsapp.svg"
 import Email from "@/../public/icons/email.svg"
 import Cellphone from "@/../public/icons/cellphone.svg"
 import { useTranslations } from "next-intl";
+import { InfoTecnologia, Tecnologias } from "@/data/data";
 
 
 export default function Home() {
-  const habilidades: {tipo: string, valores?: string[]}[] = [
-    {tipo: "linguagens", valores: ["Python", "Typescript", "Java", "PHP"]},
-    {tipo: "frameworks", valores: ["Springboot", "React", "Express", "NextJS"]},
+  const habilidades: {tipo: string, valores?: (number | string)[]}[] = [
+    {tipo: "linguagens", valores: [Tecnologias.PYTHON, Tecnologias.TYPESCRIPT, Tecnologias.JAVA, Tecnologias.PHP]},
+    {tipo: "frameworks", valores: ["Springboot", Tecnologias.REACT, "Express", Tecnologias.NEXT]},
     {tipo: "bancoDeDados", valores: ["SQL (SQLite, PostgreSQL, MySQL)"]},
     {tipo: "versionamento", valores: ["Git", "Github", "Gitlab"]},
     {tipo: "sistemasOperacionais", valores: ["Windows", "Linux"]}
@@ -46,7 +47,13 @@ export default function Home() {
                   <h4 className="text-base font-bold md:text-2xl">{t(habilidade.tipo)}</h4>
                   <div className="habilidade-container flex gap-4">
                   {habilidade.valores?.map((valor) => {
-                    return <p key={valor} className="text-neutral-600 text-base md:text-lg">{valor}</p>
+                    if (typeof valor === "string") {
+                      return <p key={valor} className="text-neutral-600 text-base md:text-lg">{valor}</p>
+                    } else {
+                      const tecnologia = InfoTecnologia[valor];
+                      return <p key={valor} className="text-neutral-600 text-base md:text-lg flex justify-center gap-1">{tecnologia.img ? <Image src={tecnologia.img} height={24} width={24} alt="icone" /> : <></>}{tecnologia.titulo}</p>
+
+                    }
                   })}
                   </div>
                 </div>

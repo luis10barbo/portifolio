@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { detectMob } from "@/utils/mobile";
+import { Link } from "@/i18n/routing";
 
 function InteriorBotao({
   children,
@@ -47,8 +48,8 @@ export default function Button({
   }, [])
   if (href || hrefCelular)
     return (
-      <a
-        href={eMobile && hrefCelular ? hrefCelular : href}
+      <Link
+        href={(eMobile && hrefCelular) ? hrefCelular : (href ? href : "#")}
         {...(otherProps as ComponentPropsWithoutRef<"a">)}
         className={twMerge(
           `px-4 py-2 text-xl bg-neutral-200 border border-neutral-300 rounded-md flex gap-2 items-center`,
@@ -58,7 +59,7 @@ export default function Button({
         {" "}
         <InteriorBotao icone={icone} />
         {children}
-      </a>
+      </Link>
     );
   return (
     <button

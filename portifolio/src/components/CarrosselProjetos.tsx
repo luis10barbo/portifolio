@@ -115,7 +115,9 @@ export default function CarrosselProjetos() {
       criarIntervalo();
     }}
     >
-      
+      {/* <p className="button-container absolute bottom-[4.5rem] z-30 flex gap-4 w-full justify-center text-white text-xl" style={{textShadow: "2px 2px 3px rgb(0,0,0)"}}>
+        {t("cliqueParaMaisInformacoes")}
+      </p> */}
       <div className="button-container absolute bottom-12 z-30 flex gap-4 w-full justify-center" >
         {projetos.map((projeto, i) => {
           return (
@@ -164,6 +166,14 @@ export default function CarrosselProjetos() {
                 ) : ( 
                   <></>
                 )}
+                {projeto.imgProjeto.length > 1 ?
+                 <Button
+                 className="bg-blue-400 text-base sm:text-xl text-white border-none shadow-md"
+                 href={projetoAtual?.id ? `/proj/${projetoAtual.id}` : "#"}
+               >
+                 {projeto.imgProjeto.length} {t("imagens")}
+               </Button>
+                 : <></>} 
               </div>
               <div className="projeto-metadata absolute top-4 left-4 bg-black text-white px-4 py-2 rounded-md shadow-md">
                 <div className="tecnologias flex gap-2">

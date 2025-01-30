@@ -9,6 +9,14 @@ import Vector3 from "@/../public/projetos/transporte/transporte3.jpeg"
 import Vector4 from "@/../public/projetos/transporte/transporte4.jpeg"
 import Vector5 from "@/../public/projetos/transporte/transporte5.jpeg"
 
+import EcommerceProduto from "@/../public/projetos/ecommerce/ecommerceproduto.png"
+import EcommerceCarrinho from "@/../public/projetos/ecommerce/ecommercecarrinho.png"
+import EcommerceFinalizar from "@/../public/projetos/ecommerce/finalizar.png"
+import EcommercePedidos from "@/../public/projetos/ecommerce/pedidos.png"
+import EcommerceAdminCrud from "@/../public/projetos/ecommerce/admincrud.png"
+import EcommerceAdminCrudEditar from "@/../public/projetos/ecommerce/admincrudeditar.png"
+
+
 
 import { StaticImport } from "next/dist/shared/lib/get-img-props"
 
@@ -76,7 +84,7 @@ export const projetos: {id: string, titulo: string, descricao?:string, tecFront:
     tecBack: [Tecnologias.SPRING, Tecnologias.POSTGRES],
     statusProjeto: StatusProjeto.PROGRESSO,
     imgProjeto:
-      [Ecommerce],
+      [Ecommerce, EcommerceProduto, EcommerceCarrinho, EcommerceFinalizar, EcommercePedidos, EcommerceAdminCrud, EcommerceAdminCrudEditar],
     repo: "https://github.com/luis10barbo/loja-spring",
     website: "https://ecommerce.luisbrb.com.br",
   },

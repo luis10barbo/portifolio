@@ -178,7 +178,8 @@ export default function CarrosselProjetos() {
               <div className="projeto-metadata absolute top-4 left-4 bg-black text-white px-4 py-2 rounded-md shadow-md">
                 <div className="tecnologias flex gap-2">
                 {projeto.tecBack.concat(projeto.tecFront).map((tec) => {
-                  return <span key={tec} className="text-base sm:text-2xl">{InfoTecnologia[tec].titulo}</span>
+                  const infoTecnologia = InfoTecnologia[tec];
+                  return <span key={tec} className="text-base sm:text-2xl flex gap-1">{infoTecnologia.img ? <Image src={infoTecnologia.img} width={20} height={20} alt="icone tec"/> : <></>}{infoTecnologia.titulo}</span>
                 })}
                 </div>
                 

@@ -20,6 +20,19 @@ import Python from "@/../public/icons/tecnologias/python.svg"
 import Java from "@/../public/icons/tecnologias/java.svg"
 import Typescript from "@/../public/icons/tecnologias/typescript.svg"
 import Php from "@/../public/icons/tecnologias/php.svg"
+import ReactImg from "@/../public/icons/tecnologias/react.svg"
+import NextImg from "@/../public/icons/tecnologias/next.svg"
+import SpringImg from "@/../public/icons/tecnologias/spring.svg"
+import SvelteImg from "@/../public/icons/tecnologias/svelte.svg"
+import NodeImg from "@/../public/icons/tecnologias/node.svg"
+
+import AngularImg from "@/../public/icons/tecnologias/angular.svg"
+import RustImg from "@/../public/icons/tecnologias/rust.svg"
+import SqliteImg from "@/../public/icons/tecnologias/sqlite.svg"
+import PostgresImg from "@/../public/icons/tecnologias/postgres.svg"
+import AndroidImg from "@/../public/icons/tecnologias/android.svg"
+
+
 
 
 
@@ -129,23 +142,23 @@ export const InfoTecnologia: {[x: number]: {
   titulo: string;
 };} = {
   [Tecnologias.SVELTE]: {
-    img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
+    img: SvelteImg,
     titulo: "Svelte",
   },
   [Tecnologias.NODE]: {
-    img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
+    img: NodeImg,
     titulo: "NodeJS",
   },
   [Tecnologias.NEXT]: {
-    img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
+    img: NextImg,
     titulo: "NextJS",
   },
   [Tecnologias.REACT]: {
-    img: "https://www.svgrepo.com/download/521311/svelte-16.svg",
+    img: ReactImg,
     titulo: "React",
   },
   [Tecnologias.SPRING]: {
-    img: "https://www.svgrepo.com/download/376350/spring.svg",
+    img: SpringImg,
     titulo: "Spring",
   },
   [Tecnologias.JAVASCRIPT]: {
@@ -153,27 +166,27 @@ export const InfoTecnologia: {[x: number]: {
     titulo: "JavaScript",
   },
   [Tecnologias.ANGULAR]: {
-    img: "https://www.svgrepo.com/download/503165/angular.svg",
+    img: AngularImg,
     titulo: "Angular",
   },
   [Tecnologias.RUST]: {
-    img: "https://www.svgrepo.com/download/369528/rust.svg",
+    img: RustImg,
     titulo: "Rust",
   },
   [Tecnologias.SWING]: {
-    img: "https://www.svgrepo.com/download/452234/java.svg",
+    img: undefined,
     titulo: "Swing",
   },
   [Tecnologias.SQLITE]: {
-    img: "https://www.svgrepo.com/download/374094/sqlite.svg",
+    img: SqliteImg,
     titulo: "SQLite",
   },
   [Tecnologias.POSTGRES]: {
-    img: "https://www.svgrepo.com/download/354200/postgresql.svg",
+    img: PostgresImg,
     titulo: "PostgreSQL",
   },
   [Tecnologias.ANDROID]: {
-    img: "https://www.svgrepo.com/download/475631/android-color.svg",
+    img: AndroidImg,
     titulo: "Android",
   },
   [Tecnologias.PYTHON]: {

@@ -73,7 +73,7 @@ export default function CarrosselProjetos() {
     }
     setPosAtualDrag(e.touches[0].clientX)
     console.log(e.touches[0].clientX)
-  }, [])
+  }, [posInicialDrag.y])
 
   useEffect(() => {
     const diffParaMudar = 100;
@@ -90,7 +90,7 @@ export default function CarrosselProjetos() {
 
       document.removeEventListener("touchmove", touchMoveEvent)
     }
-  }, [isDragging, touchMoveEvent])
+  }, [isDragging, touchMoveEvent, anteriorProjeto, posAtualDrag, posInicialDrag.x, proximoProjeto])
 
   const t = useTranslations('Index');
   const projetoAtual = projetos.at(iProjetoAtual);

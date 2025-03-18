@@ -90,6 +90,7 @@ export default function CarrosselProjetos() {
       }
 
       setPosAtualDrag(0);
+      setPosInicialDrag({x: 0, y: 0})
       document.removeEventListener("touchmove", touchMoveEvent)
     }
   }, [isTouching, touchMoveEvent, anteriorProjeto, posAtualDrag, posInicialDrag.x, proximoProjeto])
@@ -139,6 +140,7 @@ export default function CarrosselProjetos() {
       criarIntervalo();
     }}
     >
+      {posAtualDrag - posInicialDrag.x}
       {/* <p className="button-container absolute bottom-[4.5rem] z-30 flex gap-4 w-full justify-center text-white text-xl" style={{textShadow: "2px 2px 3px rgb(0,0,0)"}}>
         {t("cliqueParaMaisInformacoes")}
       </p> */}

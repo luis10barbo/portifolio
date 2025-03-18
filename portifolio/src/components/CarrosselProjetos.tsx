@@ -140,7 +140,7 @@ export default function CarrosselProjetos() {
       criarIntervalo();
     }}
     >
-      {posAtualDrag - posInicialDrag.x}
+      {/* {posAtualDrag - posInicialDrag.x} */}
       {/* <p className="button-container absolute bottom-[4.5rem] z-30 flex gap-4 w-full justify-center text-white text-xl" style={{textShadow: "2px 2px 3px rgb(0,0,0)"}}>
         {t("cliqueParaMaisInformacoes")}
       </p> */}

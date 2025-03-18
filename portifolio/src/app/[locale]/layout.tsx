@@ -6,6 +6,7 @@ import {routing} from '@/i18n/routing';
 import { notFound } from "next/navigation";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { ScrollContextProvider } from "@/context/ScrollContext";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -52,8 +53,10 @@ export default async function RootLayout({
         className={`${outfit.className} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <Header locale={locale}/>
-          {children}
+          <ScrollContextProvider>
+            <Header locale={locale}/>
+            {children}
+          </ScrollContextProvider>
         </NextIntlClientProvider>
       </body>
     </html>

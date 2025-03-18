@@ -15,7 +15,7 @@ export default function CarrosselProjetos() {
   const [isDragging, setIsDragging] = useState(false);
   const [posInicialDrag, setPosInicialDrag] = useState<{x: number, y: number}>({x:0, y:0});
   const [posAtualDrag, setPosAtualDrag] = useState<number>(0)
-  const tempoParaTrocar = 3000;
+  const tempoParaTrocar = 5000;
 
   const { lockScroll, unlockScroll } = useContext(ScrollContext);
 
@@ -78,43 +78,51 @@ export default function CarrosselProjetos() {
 
   useEffect(() => {
     const diffParaMudar = 100;
+    const diff = posAtualDrag - posInicialDrag.x;
     if (isTouching === true) {
       document.addEventListener("touchmove", touchMoveEvent)
+      if (!isDragging && Math.abs(diff) > 10) {
+        lockScroll();
+        setIsDragging(true);
+      } 
       // document.addEventListener("scroll", preventScrollEvent);
     } else {
-      const diff = posAtualDrag - posInicialDrag.x;
-      if (diff > diffParaMudar) {
-        anteriorProjeto();
-      } else if (diff < (diffParaMudar * -1)) {
-        proximoProjeto();
+      if (isDragging) {
+        if (diff > diffParaMudar) {
+          anteriorProjeto();
+        } else if (diff < (diffParaMudar * -1)) {
+          proximoProjeto();
+        }
       }
-
+      
+      setIsDragging(false);
+      unlockScroll();
       setPosAtualDrag(0);
       setPosInicialDrag({x: 0, y: 0})
       document.removeEventListener("touchmove", touchMoveEvent)
     }
-  }, [isTouching, touchMoveEvent, anteriorProjeto, posAtualDrag, posInicialDrag.x, proximoProjeto])
+  }, [isTouching, touchMoveEvent, anteriorProjeto, posAtualDrag, posInicialDrag.x, proximoProjeto, isDragging, lockScroll, unlockScroll])
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    let timeout: NodeJS.Timeout | undefined = undefined;
-    if (isTouching) {
-      timeout = setTimeout(() => {
-        lockScroll();
-        setIsDragging(true);
-      }, 100);
-    } else {
-      setIsDragging(false);
-      unlockScroll();
+  //   let timeout: NodeJS.Timeout | undefined = undefined;
+  //   if (isTouching) {
+  //     timeout = setTimeout(() => {
+  //       lockScroll();
+  //       setIsDragging(true);
+  //     }, 20);
+  //   } else {
+  //     setIsDragging(false);
+  //     unlockScroll();
 
-    }
+  //   }
     
-    return () => {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-    }
-  }, [lockScroll, unlockScroll, isTouching])
+  //   return () => {
+  //     if (timeout) {
+  //       clearTimeout(timeout);
+  //     }
+  //   }
+  // }, [])
 
   const t = useTranslations('Index');
   const projetoAtual = projetos.at(iProjetoAtual);

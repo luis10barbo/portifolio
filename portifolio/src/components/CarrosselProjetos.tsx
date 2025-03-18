@@ -74,7 +74,7 @@ export default function CarrosselProjetos() {
   const touchMoveEvent = useCallback((e: TouchEvent) => {
     setPosAtualDrag(e.touches[0].clientX)
     console.log(e.touches[0].clientX)
-  }, [posInicialDrag.y])
+  }, [])
 
   useEffect(() => {
     const diffParaMudar = 100;

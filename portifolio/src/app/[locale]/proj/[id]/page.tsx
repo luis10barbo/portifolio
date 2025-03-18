@@ -1,5 +1,7 @@
+import Button from "@/components/Button";
 import { projetos } from "@/data/data"
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 export default async function ProjetoPage({params}: {params: Promise<{id: string}>}) {
     const paramsAwaited = await params;
@@ -10,9 +12,30 @@ export default async function ProjetoPage({params}: {params: Promise<{id: string
     if (!projeto) {
         return <></>;
     }
+
+    const t = await getTranslations('Index'); 
     return <div className="mt-28 py-16 lg:w-[1280px] m-auto overflow-hidden">
         <h2 className="sm:text-9xl text-5xl font-bold text-center sm:text-left">{projeto.titulo}</h2>
         <p className="text-xl sm:text-5xl text-neutral-700 pt-4 sm:text-left text-center">{projeto.descricao}</p>
+        <div className="botoes flex gap-2">
+            {projeto.website ? <Button
+                              className="bg-black text-base sm:text-xl text-white border-none shadow-md"
+                              href={projeto.website}
+                            >
+                              {t("acessar")}
+                            </Button>: <></>}
+                            
+                            {projeto.repo ? (
+                              <Button
+                                className="bg-black text-base sm:text-xl text-white border-none shadow-md"
+                                href={projeto.repo}
+                              >
+                                {t("repositorio")}
+                              </Button>
+                            ) : ( 
+                              <></>
+                            )}
+        </div>
         <div id="imagens" className="flex gap-4 pt-12 flex-wrap px-4">
             {projeto.imgProjeto.map((img, i) => {
                 return <Image key={`img ${i}`} src={img} width={1920} height={1080} alt={`imagem projeto ${i + 1}`} className="shadow-lg rounded-lg max-h-[720px] object-contain w-fit flex-1"></Image>

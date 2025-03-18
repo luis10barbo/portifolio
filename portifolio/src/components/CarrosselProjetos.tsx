@@ -2,21 +2,22 @@
 import { InfoTecnologia, projetos } from "@/data/data";
 import Button from "./Button";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import {Link} from "@/i18n/routing";
-// import { ScrollContext } from "@/context/ScrollContext";
+import { ScrollContext } from "@/context/ScrollContext";
 
 export default function CarrosselProjetos() {
   const [iProjetoAtual, setIProjetoAtual] = useState<number>(0);
   const [nextInterval, setNextInterval] = useState<NodeJS.Timeout>();
   const [intervalo, setIntervalo] = useState(0);
   const [isTouching, setIsTouching] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [posInicialDrag, setPosInicialDrag] = useState<{x: number, y: number}>({x:0, y:0});
   const [posAtualDrag, setPosAtualDrag] = useState<number>(0)
   const tempoParaTrocar = 3000;
 
-  // const { lockScroll, unlockScroll } = useContext(ScrollContext);
+  const { lockScroll, unlockScroll } = useContext(ScrollContext);
 
   const proximoProjeto = useCallback(() => {
     setIntervalo(0);
@@ -93,6 +94,27 @@ export default function CarrosselProjetos() {
     }
   }, [isTouching, touchMoveEvent, anteriorProjeto, posAtualDrag, posInicialDrag.x, proximoProjeto])
 
+  useEffect(() => {
+
+    let timeout: NodeJS.Timeout | undefined = undefined;
+    if (isTouching) {
+      timeout = setTimeout(() => {
+        lockScroll();
+        setIsDragging(true);
+      }, 100);
+    } else {
+      setIsDragging(false);
+      unlockScroll();
+
+    }
+    
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    }
+  }, [lockScroll, unlockScroll, isTouching])
+
   const t = useTranslations('Index');
   const projetoAtual = projetos.at(iProjetoAtual);
 
@@ -144,7 +166,7 @@ export default function CarrosselProjetos() {
             key={projeto.titulo}
             className="h-[695px] w-full bg-white absolute duration-150 rounded-3xl overflow-hidden"
             style={{
-              transform: `translateX(calc(${(100 * i) - (100 * iProjetoAtual)}% + ${(isTouching ? posAtualDrag - posInicialDrag.x : 0)}px))`,
+              transform: `translateX(calc(${(100 * i) - (100 * iProjetoAtual)}% + ${((isTouching && isDragging) ? posAtualDrag - posInicialDrag.x : 0)}px))`,
             }}
           >
             <Link href={projetoAtual?.id ? `/proj/${projetoAtual.id}` : "#"} className="absolute w-full h-full z-30 hover:bg-black/5 duration-75"/>
